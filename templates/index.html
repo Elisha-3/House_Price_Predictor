@@ -1,0 +1,70 @@
+<html>
+<head>
+<style>
+.button {
+background-color: #23b83c;
+	border: 2px solid #020353;
+	color: whitesmoke;
+	padding: 0.5em 0.5em;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1em;
+	display: inline-block;
+	width: 18%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 8px 0 #000; 
+}
+body {
+  background-image: url("{{url_for('static', filename='bg-1.jpg')}}");
+  background-repeat: no-repeat;
+ background-size: 100% 100%;
+}
+h1{
+   background-color: Green;
+  color: white;
+}
+h3{
+   background-color: green;
+  color: white;
+}
+
+
+</style>
+</head>
+<body>
+<center>
+
+
+<h1>Predict House Price</h1>
+<pre>
+	<form action="{{ url_for('predict')}}" method="post">
+		<select name="county" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;">
+		  <option value="" disabled selected>Select County</option>
+		  <option value="Nairobi">Nairobi</option>
+		  <option value="Mombasa">Mombasa</option>
+		  <option value="Kisumu">Kisumu</option>
+		  <option value="Nakuru">Nakuru</option>
+		  <option value="Uasin Gishu">Uasin Gishu</option>
+		  <option value="Kiambu">Kiambu</option>
+		  <option value="Machakos">Machakos</option>
+		</select>
+		<br><br>
+		<select name="area_type" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;">
+		  <option value="" disabled selected>Select Area Type</option>
+		  <option value="Urban">Urban</option>
+		  <option value="Suburban">Suburban</option>
+		  <option value="Rural">Rural</option>
+		</select>
+		<br><br>
+		<input type="text" name="area" placeholder="Enter Area in sq. m" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;"/>
+		<br><br>
+		<button type="submit" class="button">Predict Price</button>
+	  </form>
+	  
+<textarea readonly cols="30" rows="7">
+{{prediction_text}}
+</textarea>
+</pre>
+</center>
+</body>
+</html>

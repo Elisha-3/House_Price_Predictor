@@ -1,0 +1,7 @@
+{
+    "County": ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Uasin Gishu", "Kiambu", "Machakos"],
+    "Urban Price (KES per sq. m)": [41600, 32000, 28000, 30000, 25000, 35000, 27000],
+    "Suburban Price (KES per sq. m)": [35000, 27000, 23000, 25000, 20000, 30000, 22000],
+    "Rural Price (KES per sq. m)": [25000, 20000, 18000, 20000, 15000, 22000, 18000]
+  }
+  
