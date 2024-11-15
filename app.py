@@ -1,6 +1,7 @@
 import pandas as pd
 from flask import Flask, request, render_template
 import pickle
+import os
 
 
 app = Flask(__name__)
@@ -38,5 +39,6 @@ def predict():
     prediction_text = f"The estimated house price in {county} ({area_type}) for an area of {area:.2f} sq. m is KES {predicted_price:,.2f}."
     return render_template('index.html', prediction_text=prediction_text)
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
