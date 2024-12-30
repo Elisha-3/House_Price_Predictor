@@ -1,70 +1,91 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .button {
-background-color: #23b83c;
-	border: 2px solid #020353;
-	color: whitesmoke;
-	padding: 0.5em 0.5em;
-	text-align: center;
-	text-decoration: none;
-	font-size: 1em;
-	display: inline-block;
-	width: 18%;
-	border-radius: 5px;
-	box-shadow: 3px 3px 8px 0 #000; 
+  background-color: #23b83c;
+  border: 2px solid #020353;
+  color: whitesmoke;
+  padding: 0.5em 0.5em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  display: inline-block;
+  width: 18%;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px 0 #000; 
 }
 body {
   background-image: url("{{url_for('static', filename='bg-1.jpg')}}");
   background-repeat: no-repeat;
- background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
-h1{
-   background-color: Green;
+h1 {
+  background-color: Green;
   color: white;
+  padding: 1em;
+  margin: 0;
 }
-h3{
-   background-color: green;
+h3 {
+  background-color: green;
   color: white;
+  padding: 0.5em;
+  margin: 0;
 }
-
-
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form select, form input {
+  padding: 0.5em;
+  width: 80%;
+  max-width: 500px;
+  border: 1px solid #020353;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+textarea {
+  width: 80%;
+  max-width: 500px;
+  margin-top: 1em;
+}
+@media (max-width: 600px) {
+  .button {
+    width: 50%;
+  }
+}
 </style>
 </head>
 <body>
 <center>
-
-
 <h1>Predict House Price</h1>
-<pre>
-	<form action="{{ url_for('predict')}}" method="post">
-		<select name="county" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;">
-		  <option value="" disabled selected>Select County</option>
-		  <option value="Nairobi">Nairobi</option>
-		  <option value="Mombasa">Mombasa</option>
-		  <option value="Kisumu">Kisumu</option>
-		  <option value="Nakuru">Nakuru</option>
-		  <option value="Uasin Gishu">Uasin Gishu</option>
-		  <option value="Kiambu">Kiambu</option>
-		  <option value="Machakos">Machakos</option>
-		</select>
-		<br><br>
-		<select name="area_type" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;">
-		  <option value="" disabled selected>Select Area Type</option>
-		  <option value="Urban">Urban</option>
-		  <option value="Suburban">Suburban</option>
-		  <option value="Rural">Rural</option>
-		</select>
-		<br><br>
-		<input type="text" name="area" placeholder="Enter Area in sq. m" required style="padding: 0.5em; width: 50%; border: 1px solid #020353; border-radius: 5px;"/>
-		<br><br>
-		<button type="submit" class="button">Predict Price</button>
-	  </form>
-	  
+<form action="{{ url_for('predict')}}" method="post">
+  <select name="county" required>
+    <option value="" disabled selected>Select County</option>
+    <option value="Nairobi">Nairobi</option>
+    <option value="Mombasa">Mombasa</option>
+    <option value="Kisumu">Kisumu</option>
+    <option value="Nakuru">Nakuru</option>
+    <option value="Uasin Gishu">Uasin Gishu</option>
+    <option value="Kiambu">Kiambu</option>
+    <option value="Machakos">Machakos</option>
+  </select>
+  <select name="area_type" required>
+    <option value="" disabled selected>Select Area Type</option>
+    <option value="Urban">Urban</option>
+    <option value="Suburban">Suburban</option>
+    <option value="Rural">Rural</option>
+  </select>
+  <input type="text" name="area" placeholder="Enter Area in sq. m" required />
+  <button type="submit" class="button">Predict Price</button>
+</form>
 <textarea readonly cols="30" rows="7">
 {{prediction_text}}
 </textarea>
-</pre>
 </center>
 </body>
 </html>
